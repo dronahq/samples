@@ -1,0 +1,7 @@
+.main.container {
+    padding-top: 6em;
+}
+
+.hide {
+    display: none !important;
+}
