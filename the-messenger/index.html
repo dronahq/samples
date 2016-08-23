@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="app">
+<head>
+    <meta charset="utf-8" />
+    <title>Send notifications - DronaHQ</title>    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="css/animate.css" type="text/css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/font.css" type="text/css" />
+    <link rel="stylesheet" href="css/sweetalert.css" type="text/css" />
+
+    <link rel="stylesheet" href="css/app.css" type="text/css" />
+</head>
+<body class="container">
+    <section class="vbox">
+        <header class="bg-white header header-md navbar navbar-fixed-top-xs box-shadow">
+            <div class="navbar-header dk">
+                <a id="lnkBack" class="btn btn-link hide">
+                    <i class="fa fa-chevron-left"></i> Back
+                </a>
+                <a href="index.html" class="navbar-brand">
+                    <img src="images/logo.png" class="m-r-sm" alt="scale">
+                </a>
+                <a id="lnkSend" href="#" class="btn btn-link hide">
+                    <i class="fa fa-check"></i> Send!
+                </a>
+            </div>
+        </header>
+        <section>
+            <section class="hbox stretch">
+                <section id="content">
+                    <section class="vbox">
+                        <section class="scrollable wrapper">
+                            <div id="dvMsgBox" class="row m-b">
+                                <header class="header bg-light b-b">
+                                    <h4 class="pull-left">The Messenger</h4>                                    
+                                </header>
+                                <div class="m-t col-sm-12">
+                                    <div class="form-group">
+                                        <label>Enter message</label>
+                                        <textarea id="txtMessage" rows="4" class="form-control no-resize" placeholder="(120 characters max)"></textarea>
+                                    </div>
+                                    <div id="dvAttImg" class="text-center hide">
+                                        <img class="img-responsive" />
+                                    </div>
+                                    <a id="btnSelectUser" href="#" class="btn btn-info">
+                                        Select Users&nbsp;
+                                        <i class="fa fa-chevron-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div id="dvUserList" class="row hide">
+                                <div class="col-sm-12">
+                                    <section class="panel panel-default">
+                                        <header class="panel-heading">
+                                            <form id="frmSearch">
+                                                <div class="input-group">
+                                                    <input id="txtSeach" type="search" class="form-control">
+                                                    <span class="input-group-btn">
+                                                        <button id="btnSeachUser" class="btn btn-default" type="submit">Search!</button>
+                                                    </span>
+                                                </div>
+                                            </form>
+                                            <div id="ajaxLoader" class="loading m-t hide">
+                                                <div class="progress progress-sm progress-striped active m-b-sm">
+                                                    <div class="progress-bar bg-info lter" data-toggle="tooltip" data-original-title="100%" style="width: 100%">
+                                                        <span>please wait...</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </header>
+                                        <ul id="ulUserList" class="list-group alt selectable"></ul>
+                                    </section>
+                                </div>
+                            </div>                            
+                        </section>
+                    </section>                    
+                </section>
+            </section>
+        </section>
+    </section>
+    <script type="text/x-handlebars-template" id="tmpl-user">
+        {{#each user}}
+        <li class="list-group-item js-userli" data-userid={{user_id}}>
+            <div class="media">
+                <span class="pull-left thumb-sm"><img src="{{user_profile_url}}" alt="" class="img-circle"></span>
+                <div class="media-body">
+                    <div><a href="#">{{user_name}}</a></div>
+                </div>
+            </div>
+        </li>
+        {{/each}}
+    </script>    
+    <script src="js/vendor/dronahq.js"></script>
+    <script src="js/vendor/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/vendor/bootstrap.js"></script>
+    <script src="js/vendor/handlebars-v3.0.3.js"></script>
+    <script src="js/vendor/sweetalert.js"></script>
+    <script src="js/vendor/jquery.blockUI.js"></script>
+    <script src="js/vendor/q.js"></script>
+
+    <!-- App -->
+    <script src="js/config.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
