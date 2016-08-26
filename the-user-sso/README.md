@@ -5,7 +5,7 @@ Check our [documentation](http://docs.dronahq.com) to know more about DronaHQ AP
 
 ## About the app
 
-<div style="text-align:center"><img src ="docs/screenshot.png" title="User SSO" /></div>
+<div style="text-align:center"><img src ="docs/profile.png" title="User SSO" /></div>
 
 This app retrieves the profile of currently logged-in user using `DronaHQ.user.getProfile()` method. 
 The profile object also contains a property `nonce` which can be used to securely generate a session token from
