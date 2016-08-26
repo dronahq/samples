@@ -13,18 +13,17 @@ var App = function () {
     // create a base64 encoded PNG
     var data = new Identicon(hash, options).toString()
 
-    return data
+    return 'data:image/png;base64, ' + data;
   }
 
   var _initUser = function () {
     DronaHQ.user.getProfile(function (uData) {
       console.log('User ID: ' + uData.uid)
-      $('#spUserName1, #spUserName2').text(uData.name)
+      $('#spUserName').text(uData.name)
       $('#spUserEmail').text(uData.email)
       if (uData.designation) {
-        $('#userDesig').removeClass('hide')
-        $('#spUserDesig').text(uData.designation)
-        $('#spAorAn').text(AvsAnSimple.query(uData.designation))
+        $('#userDesg').removeClass('hide')
+        $('#spUserDesg').text(uData.designation)
       }
       if (uData.profile_image) {
         $('#imgUserProfile').attr('src', uData.profile_image)

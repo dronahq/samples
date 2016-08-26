@@ -1,7 +1,52 @@
-.main.container {
-    padding-top: 6em;
+#top,
+#bottom {
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 50%;
+}
+
+#top {
+    top: 0;
+    background: rgba(147,206,222,1);
+    background: -moz-linear-gradient(top, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 41%, rgba(78,99,230,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(147,206,222,1)), color-stop(41%, rgba(117,189,209,1)), color-stop(100%, rgba(78,99,230,1)));
+    background: -webkit-linear-gradient(top, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 41%, rgba(78,99,230,1) 100%);
+    background: -o-linear-gradient(top, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 41%, rgba(78,99,230,1) 100%);
+    background: -ms-linear-gradient(top, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 41%, rgba(78,99,230,1) 100%);
+    background: linear-gradient(to bottom, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 41%, rgba(78,99,230,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#93cede', endColorstr='#4e63e6', GradientType=0 );
+}
+
+#bottom {
+    bottom: 0;
+}
+
+.user-profile {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.padding-t-10 {
+    padding-top: 10px;
+}
+
+.image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 110px;
+    height: 110px;
+}
+
+#imgUserProfile {
+    max-width: 100%;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 4px solid #000000;
 }
 
 .hide {
-    display: none !important;
+    display:none;
 }
