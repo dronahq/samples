@@ -40,7 +40,7 @@
                     <div class="field">
                         <input id="txtDesig" type="text" name="designation" placeholder="Designation">
                     </div>
-                    <div class="field">                        
+                    <div class="field">
                         <input id="txtCompanyName" type="text" name="company-name" placeholder="Company Name">
                     </div>
                 </div>
@@ -51,21 +51,29 @@
                     <div class="field">
                         <input id="txtPhone" type="tel" name="phone-num" placeholder="Phone #">
                     </div>
-                    <div class="field">                        
+                    <div class="field">
                         <input id="txtEmail" type="email" name="email" placeholder="Email">
                     </div>
                 </div>
             </div>
             <div class="ui" tabindex="0">
                 <div class="ui error message"></div>
-                <button type="button" id="btnSave" class="fluid primary ui button">Save Contact</button>          
+                <button type="button" id="btnSave" class="fluid primary ui button">Save Contact</button>
+            </div>
+            <div id="ftrPendingUpload" class="bg-primary" style="">
+                <div id="dvPendingCount" class="ui left floated text-white" style="">
+                    <span id="spPendingCount">0</span><span> SUBMISSION PENDING</span>
+                </div>
+                <button id="btnSubmitPending" type="button" class="ui primary button right floated">
+                    SUBMIT
+                </button>
             </div>
         </form>
     </div>
     <script src="js/vendor/dronahq.js"></script>
     <script src="js/vendor/jquery.min.js"></script>
     <script src="js/vendor/semantic.min.js"></script>
-    
+
     <script src="js/config.js"></script>
     <script src="js/app.js"></script>
 </body>

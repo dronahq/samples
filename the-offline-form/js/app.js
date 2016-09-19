@@ -1,13 +1,13 @@
-var App = function() {
+var App = function () {
 
-    var _bindEvents = function() {
+    var _bindEvents = function () {
 
         //Submit contact form via DronaHQ.sync.upload()        
-        $('#btnSave').on('click', function(e) {
+        $('#btnSave').on('click', function (e) {
             e.preventDefault();
 
-            var isFormValid  = $('#frmNewContact').form('is valid');
-            if(!isFormValid){
+            var isFormValid = $('#frmNewContact').form('is valid');
+            if (!isFormValid) {
                 return;
             }
             $(this).addClass('loading');
@@ -22,7 +22,7 @@ var App = function() {
                 phone_num: $('#txtPhone').val(),
                 email: $('#txtEmail').val()
             }
-            
+
             DronaHQ.sync.upload(CONFIG.API_URL, 'POST', reqObj);
 
             //Optionally awake the sync service.
@@ -34,11 +34,38 @@ var App = function() {
             $(this).removeClass('loading');
             $('#frmNewContact').form('clear');
 
+            //if there is pending upload
+            //get pending upload count
+            getPendingUploadCount();
+
             return false;
+        });
+
+        //submit pending upload
+        $('#btnSubmitPending').off('click').on('click', function (e) {
+
+            DronaHQ.sync.refresh('upload');
+
+            alert('Starting upload.');
+        });
+
+        document.addEventListener('dronahq.sync.uploadcomplete', function () {
+            //Refresh task is complete.
+            getPendingUploadCount();
+
+            alert('Upload complete.');
         });
     };
 
-    var _initPlugins = function() {
+    var getPendingUploadCount = function () {
+        DronaHQ.sync.getPendingUploadCount(function (count) {
+            $('#spPendingCount').text(count.count);
+        },
+        function (e) {
+        });
+    }
+
+    var _initPlugins = function () {
         $('#frmNewContact')
             .form({
                 inline: true,
@@ -84,8 +111,8 @@ var App = function() {
                             type: 'empty',
                             prompt: 'Please enter your email'
                         }, {
-                            type   : 'email',
-                            prompt : 'Please enter a valid e-mail'
+                            type: 'email',
+                            prompt: 'Please enter a valid e-mail'
                         }]
                     }
                 }
@@ -93,14 +120,19 @@ var App = function() {
     }
 
     return {
-        init: function() {
+        init: function () {
             _initPlugins();
             _bindEvents();
+
+
+            //if there is pending upload
+            //get pending upload count
+            getPendingUploadCount();
         }
     }
 };
 
-$(document).on('deviceready', function() {
+$(document).on('deviceready', function () {
     var objApp = new App();
     objApp.init();
 });
