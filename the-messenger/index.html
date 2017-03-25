@@ -1,8 +1,9 @@
 ﻿<!DOCTYPE html>
 <html lang="en" class="app">
+
 <head>
     <meta charset="utf-8" />
-    <title>Send notifications - DronaHQ</title>    
+    <title>Send notifications - DronaHQ</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
     <link rel="stylesheet" href="css/animate.css" type="text/css" />
@@ -12,11 +13,12 @@
 
     <link rel="stylesheet" href="css/app.css" type="text/css" />
 </head>
+
 <body class="container">
     <section class="vbox">
         <header class="bg-white header header-md navbar navbar-fixed-top-xs box-shadow">
             <div class="navbar-header dk">
-                <a id="lnkBack" class="btn btn-link hide">
+                <a id="lnkBack" class="btn btn-link">
                     <i class="fa fa-chevron-left"></i> Back
                 </a>
                 <a href="index.html" class="navbar-brand">
@@ -34,7 +36,7 @@
                         <section class="scrollable wrapper">
                             <div id="dvMsgBox" class="row m-b">
                                 <header class="header bg-light b-b">
-                                    <h4 class="pull-left">The Messenger</h4>                                    
+                                    <h4 class="pull-left">The Messenger</h4>
                                 </header>
                                 <div class="m-t col-sm-12">
                                     <div class="form-group">
@@ -48,6 +50,24 @@
                                         Select Users&nbsp;
                                         <i class="fa fa-chevron-right"></i>
                                     </a>
+                                </div>
+
+                                <div class="m-t col-sm-12 hide" id="dvMsgContainer">
+                                    <div class="m-t col-sm-2" id="dvMsgSender">
+                                    </div>
+                                    <div class="m-t col-sm-8" id="dvMsgText">
+                                    </div>
+                                </div>
+
+
+                                <div class="m-t col-sm-12 hide" id="dvShowPendCountContainer">
+                                    <div class="m-t col-sm-8" id="dvShowPendCount">
+                                    </div>
+                                    <div class="m-t col-sm-2">
+                                        <a id="btnSync" href="#" class="btn btn-info">
+                                        Sync
+                                    </a>
+                                    </div>
                                 </div>
                             </div>
 
@@ -74,9 +94,9 @@
                                         <ul id="ulUserList" class="list-group alt selectable"></ul>
                                     </section>
                                 </div>
-                            </div>                            
+                            </div>
                         </section>
-                    </section>                    
+                    </section>
                 </section>
             </section>
         </section>
@@ -92,7 +112,7 @@
             </div>
         </li>
         {{/each}}
-    </script>    
+    </script>
     <script src="js/vendor/dronahq.js"></script>
     <script src="js/vendor/jquery.min.js"></script>
     <!-- Bootstrap -->
@@ -106,4 +126,5 @@
     <script src="js/config.js"></script>
     <script src="js/app.js"></script>
 </body>
+
 </html>
