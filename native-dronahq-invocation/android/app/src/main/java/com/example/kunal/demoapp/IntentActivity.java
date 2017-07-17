@@ -20,14 +20,17 @@ protected void onCreate(Bundle savedInstanceState) {
     setSupportActionBar(toolbar);
 
     Intent intent = getIntent();
-    Uri data = intent.getData();
-    if (data != null) {
-        String de = data.getHost();
-        if (!de.isEmpty()) {
-            Toast.makeText(this, de, Toast.LENGTH_SHORT).show();
+    if(Intent.ACTION_VIEW.equals(intent.getAction()))
+    {
+        Uri uri = intent.getData();
+        if (data != null) {
+        String dhqNonce = uri.getQueryParameter("nonce");
+        String dhqUid = uri.getQueryParameter("uid");
+        //Use uid & nonce to make HTTP call to DronaHQ users API
+        } else {
+            Toast.makeText(this, "No data received", Toast.LENGTH_SHORT).show();
         }
     }
-
 }
 
 }
