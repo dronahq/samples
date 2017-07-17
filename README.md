@@ -23,5 +23,8 @@ data while user is offline.
 This sample app demonstrates how to use DronaHQ User method to get
 profile of currently logged-in user.
 
+## Native DronaHQ Invocation
+This sample app demonstrates how to use DronaHQ for native app invocation .
+
 ## Support
 dev[at]dronahq[dot]com

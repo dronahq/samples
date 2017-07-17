@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">DemoApp</string>
+    <string name="title_activity_intent">IntentActivity</string>
+</resources>
