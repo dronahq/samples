@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="dhq-native-plugin" version="0.0.1"
+    xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>dhqNativePlugin</name>
+    <js-module name="dhqNativePlugin" src="www/dhqNativePlugin.js">
+        <clobbers target="cordova.plugins.dhqNativePlugin" />
+    </js-module>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="dhqNativePlugin">
+                <param name="ios-package" value="dhqNativePlugin" />
+            </feature>
+        </config-file>
+        <config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
+            <array>
+                <string>dhq</string>
+            </array>
+        </config-file>
+        <source-file src="src/ios/dhqNativePlugin.m" />
+        <source-file src="src/ios/dhqNativePlugin.h" />
+        <source-file src="src/ios/AppDelegate+DHQNativePlugin.m" />
+        <header-file src="src/ios/AppDelegate+DHQNativePlugin.h" />
+    </platform>
+
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="dhqNativePlugin">
+                <param name="android-package" value="org.apache.cordova.dhqnativeplugin.dhqNativePlugin" />
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+        <source-file src="src/android/dhqNativePlugin.java" target-dir="src/org/apache/cordova/dhqnativeplugin" />
+        <source-file src="src/android/NativeAppCallBack.java" target-dir="src/org/apache/cordova/dhqnativeplugin" />
+        <edit-config file="AndroidManifest.xml" target="/manifest/application/activity[@android:name='MainActivity']/" mode="over-write">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="nativetest" /> <!-- Update your current app scheme here -->
+            </intent-filter>
+        </edit-config>
+    </platform>
+</plugin>

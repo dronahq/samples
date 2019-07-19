@@ -1,0 +1,53 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {
+      "config.xml": {
+        "parents": {
+          "/*": [
+            {
+              "xml": "<feature name=\"dhqNativePlugin\"><param name=\"ios-package\" value=\"dhqNativePlugin\" /></feature>",
+              "count": 1
+            }
+          ]
+        }
+      },
+      "*-Info.plist": {
+        "parents": {
+          "LSApplicationQueriesSchemes": [
+            {
+              "xml": "<array><string>dhq</string></array>",
+              "count": 1
+            }
+          ]
+        }
+      }
+    }
+  },
+  "installed_plugins": {
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.deltecs.NativeAppTest"
+    },
+    "dhq-native-plugin": {
+      "PACKAGE_NAME": "com.deltecs.NativeAppTest"
+    }
+  },
+  "dependent_plugins": {},
+  "modules": [
+    {
+      "id": "dhq-native-plugin.dhqNativePlugin",
+      "file": "plugins/dhq-native-plugin/www/dhqNativePlugin.js",
+      "pluginId": "dhq-native-plugin",
+      "clobbers": [
+        "cordova.plugins.dhqNativePlugin"
+      ]
+    }
+  ],
+  "plugin_metadata": {
+    "cordova-plugin-whitelist": "1.3.3",
+    "dhq-native-plugin": "0.0.1"
+  }
+}

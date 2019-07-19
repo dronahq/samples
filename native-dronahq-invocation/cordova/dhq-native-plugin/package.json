@@ -1,0 +1,17 @@
+{
+  "name": "dhq-native-plugin",
+  "version": "0.0.1",
+  "description": "Plugin to integrate DHQ Native SSO integration",
+  "cordova": {
+    "id": "com.deltecs.dhqnative",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "Fenil",
+  "license": "Apache Version 2"
+}
