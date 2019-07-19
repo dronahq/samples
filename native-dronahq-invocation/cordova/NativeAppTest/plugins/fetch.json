@@ -1,0 +1,18 @@
+{
+  "cordova-plugin-whitelist": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-whitelist@1"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "dhq-native-plugin": {
+    "source": {
+      "type": "local",
+      "path": "J:\\Rishabh\\IonicTesting\\deepLink GIT\\native-app-sso-integration\\CordovaExample\\NativeAppTest\\node_modules\\dhq-native-plugin"
+    },
+    "is_top_level": true,
+    "variables": {}
+  }
+}

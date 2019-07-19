@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="dhq-native-plugin" version="0.0.1"
+    xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>dhqNativePlugin</name>
+    <js-module name="dhqNativePlugin" src="www/dhqNativePlugin.js">
+        <clobbers target="cordova.plugins.dhqNativePlugin" />
+    </js-module>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="dhqNativePlugin">
+                <param name="ios-package" value="dhqNativePlugin" />
+            </feature>
+        </config-file>
+        <config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
+            <array>
+                <string>dhq</string>
+            </array>
+        </config-file>
+        <source-file src="src/ios/dhqNativePlugin.m" />
+        <source-file src="src/ios/dhqNativePlugin.h" />
+        <source-file src="src/ios/AppDelegate+DHQNativePlugin.m" />
+        <header-file src="src/ios/AppDelegate+DHQNativePlugin.h" />
+    </platform>
+</plugin>
