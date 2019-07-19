@@ -1,9 +1,9 @@
 //
 //  main.m
-//  NativeAppSample
+//  NativeAppTest
 //
-//  Created by Aradhana on 7/14/17.
-//  Copyright © 2017 DeltecsDeltecs. All rights reserved.
+//  Created by Deltecs on 05/06/19.
+//  Copyright © 2019 Deltecs. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
