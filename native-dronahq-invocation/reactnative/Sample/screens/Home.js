@@ -16,13 +16,17 @@ class Home extends Component {
   };
 
   componentDidMount() {
+    //Used in both android and ios 
+    //But in ios this works only when app is in killed state
+    //also make sure to disable remote debugging and live reload
+    Linking.getInitialURL().then(url => {
+      this.navigate(url);
+    });
     if (Platform.OS === 'android') {
       // get the url from intent here
-      Linking.getInitialURL().then(url => {
-        this.navigate(url);
-      });
     } else {
-      Linking.addEventListener('url', this.handleNavigation);
+      //This is required for receiving the event when app is in background state
+      Linking.addEventListener('url', this.handleNavigation); 
     }
   }
 
@@ -43,7 +47,7 @@ class Home extends Component {
     //const id = route.match(/\/([^\/]+)\/?$/)[1];
     //const routeName = route.split('/')[0];
 
-    if (url != null && url.includes('nativetest')) {
+    if (url != null && url.includes('nonce') && url.includes('uid')) {
       this.props.navigation.navigate('Details', {
         Deep_linking_data: url,
       })
