@@ -56,30 +56,62 @@ return (
 );
 ```
 
-In Home.js we basically receive the deeplinking data and also we can open DronaHQ app with a button
+In Home.js we basically receive the deeplinking data and also we can open DronaHQ app with a button.
 
-1. To receive data we can use getInitialURL() method of "Linking" package as below.
+    Inside componentDidMount() method we do the following
+1. For Android To receive data we can use getInitialURL() method of "Linking" package as below.
 ```js
-componentDidMount() {
     Linking.getInitialURL().then(url => {
            this.navigate(url);
     });
-}
 ```
-In above code componentDidMount() is called after all the elements of page is loaded correctly.
+2. For IOS
+You need to register a event listener which will be triggered in case of universal link execution.
+Following is the sample to register the event listerner.
+
+```js
+Linking.addEventListener('url', this.handleNavigation); 
+
+handleNavigation = (event) => {
+    //Based on the link url from external app, navigate to specific page
+    //(event.url === "nativetest://") ? this.goToDetailsPage() : this.goToHomePage()
+    //event.url
+    this.navigate(event.url);
+  }
+```
+Final code of componentDidMount() would look like this
+```js
+componentDidMount() {
+    //Used in both android and ios 
+    //But in ios this works only when app is in killed state
+    //also make sure to disable remote debugging and live reload
+     Linking.getInitialURL().then(url => {
+        this.navigate(url);
+      });
+    if (Platform.OS === 'android') {
+      // get the url from intent here
+    } else {
+      //This is required for receiving the event when app is in background state
+      Linking.addEventListener('url', this.handleNavigation); 
+    }
+  }
+
+```
+
+-In above code componentDidMount() is called after all the elements of page is loaded correctly.
 navigate method navigates to Details.js and passes received data (url) with key "Deep_linking_data"
 as follows:
 ```js
 navigate = (url) => {
-    if (url != null && url.includes('nativetest')) {
-	  this.props.navigation.navigate('Details', {
-              Deep_linking_data: url,
-            })
+    iif (url != null && url.includes('nonce') && url.includes('uid')) {
+      this.props.navigation.navigate('Details', {
+        Deep_linking_data: url,
+      })
     };
   }
 ```
 
-2. To open other native app we can use canOpenURL() method of the same "Linking" package. 
+-To open other native app we can use canOpenURL() method of the same "Linking" package. 
     Just create openApp() method and call it on the button click
 ```js
 openApp() {
@@ -121,6 +153,15 @@ ios/ProjectName.xcodeproj
             {
                 return [RCTLinkingManager application:application openURL:url options:options];
             }
+        
+        - (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity 
+            restorationHandler:(nonnull void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler 
+            {
+                return [RCTLinkingManager application:application
+                continueUserActivity:userActivity
+                restorationHandler:restorationHandler];
+            }
+    
     -----------------------------------
 
     The use of the code is to receive the payload when called from DronaHQ container app.
